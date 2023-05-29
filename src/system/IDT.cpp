@@ -25,7 +25,6 @@ extern uint_64 isr1;
 extern "C" void LoadIDT();
 
 void InitializeIDT(){
-
 	_idt[1].zero = 0;
 	_idt[1].offset_low = (uint_16)(((uint_64)&isr1 & 0x000000000000ffff));
 	_idt[1].offset_mid = (uint_16)(((uint_64)&isr1 & 0x00000000ffff0000) >> 16);

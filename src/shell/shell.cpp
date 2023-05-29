@@ -37,6 +37,8 @@ void ParseCommand(){
 
     if(char_contains(command, 5, "clear")){ ClearScreen(); }
     else if(char_contains(command, 4, "info")){ PrintString("\n\r"); PrintVersion(); }
+    else if(char_contains(command, 8, "template")){ PrintString("\n\r"); PrintString("You discovered a Easter Egg!\n\r"); }
+    else if(char_contains(command, 8, "shutdown")){ PrintString("\n\r"); PrintString("It's safe to turn off the PC now.\n\r", BACKGROUND_BLUE | FOREGROUND_YELLOW); while(true) asm("hlt"); }
     else { PrintString("\n\rCould not find command '"); PrintString(command); PrintString("'!\n\r"); }
     for(int i=0; i<128; i++) command[i] = 0;
     return;

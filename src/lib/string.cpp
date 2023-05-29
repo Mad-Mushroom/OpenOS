@@ -10,6 +10,7 @@
 #include "../Kernel.h"
 
 bool char_contains(char arr[], uint_8 len, const char* ch){
+    if(len <= 0) return false;
     char cch[len];
     uint_8* charPtr = (uint_8*)ch;
     uint_16 index = 0;

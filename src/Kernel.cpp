@@ -10,7 +10,7 @@
 void BootScreen(){
 	ClearScreen(BACKGROUND_BLACK | FOREGROUND_WHITE);
 	SetCursorPosition(PositionFromCoords(0, 0));
-	PrintString("Starting OpenOS...");
+	PrintString("Starting OpenOS...", BACKGROUND_BLACK | FOREGROUND_WHITE);
 }
 
 void StartScreen(){
