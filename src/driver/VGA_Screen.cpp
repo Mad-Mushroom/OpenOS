@@ -75,6 +75,17 @@ void PrintChar(char chr, uint_8 color = DEFAULT_BACKGROUND | DEFAULT_FOREGROUND)
   SetCursorPosition(CursorPosition + 1);
 }
 
+void VGA_scrollback(int lines){
+    for (int y = lines; y < VGA_HEIGHT; y++)
+        for (int x = 0; x < VGA_WIDTH; x++)
+        {
+          SetCursorPosition(PositionFromCoords(x, y - lines));
+          PrintChar(((char)0xb8000) + (y * VGA_WIDTH + x));
+        }
+    //g_ScreenY -= lines;
+    CursorPosition -= VGA_WIDTH * lines;
+}
+
 char hexToStringOutput[128];
 template<typename T>
 const char* HexToString(T value){

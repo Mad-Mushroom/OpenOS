@@ -25,6 +25,6 @@ bool char_contains(char arr[], uint_8 len, const char* ch){
             result++;
         }
     }
-    if(result == len) return true;
+    if(result >= len) return true;
     else return false;
 }

@@ -30,9 +30,14 @@ void StartScreen(){
 }
 
 void init(){
+	if(VERBOSE == true) PrintString("\n\n\rInitialized Verbose Mode.");
 	InitializeIDT();
+	if(VERBOSE == true) PrintString("\n\rInitialized IDT.");
 	MainKeyboardHandler = KeyboardHandler;
+	if(VERBOSE == true) PrintString("\n\rInitialized Keyboard Handler.");
 	initShell();
+	if(VERBOSE == true) PrintString("\n\rInitialized Shell.");
+	if(VERBOSE == true) PrintString("\n\n\rDone.");
 }
 
 extern "C" void _start() {
