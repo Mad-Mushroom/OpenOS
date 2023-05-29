@@ -8,6 +8,7 @@
 #pragma once
 
 #include "../Kernel.h"
+#include "../shell/shell.cpp"
 
 bool LeftShiftPressed = false;
 bool RightShiftPressed = false;
@@ -18,9 +19,11 @@ void StandardKeyboardHandler(uint_8 scanCode, uint_8 chr) {
 		switch (LeftShiftPressed | RightShiftPressed)
 		{
 		case true:
+			Shell_AddChar(chr - 32);
 			PrintChar(chr - 32);
 			break;
 		case false:
+			Shell_AddChar(chr);
 			PrintChar(chr);
 			break;
 		}
@@ -29,9 +32,7 @@ void StandardKeyboardHandler(uint_8 scanCode, uint_8 chr) {
 	else {
 		switch (scanCode) {
 		case 0x8E: //Backspace
-			SetCursorPosition(CursorPosition - 1);
-			PrintChar(' ');
-			SetCursorPosition(CursorPosition - 1);
+			Shell_BackspacePressed();
 			break;
 		case 0x2A: //Left Shift
 			//LeftShiftPressed = true;
@@ -45,7 +46,8 @@ void StandardKeyboardHandler(uint_8 scanCode, uint_8 chr) {
 			//RightShiftPressed = false;
 			break;
 		case 0x9C: //Enter
-			PrintString("\n\r");
+			//PrintString("\n\r");
+			Shell_EnterPressed();
 			break;
 		}
 	}

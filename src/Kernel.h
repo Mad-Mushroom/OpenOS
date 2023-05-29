@@ -12,6 +12,9 @@
 #include "misc/TextModeColorCodes.cpp"
 #include "misc/Typedefs.cpp"
 
+/* Librarys */
+#include "lib/string.cpp"
+
 /* System */
 #include "system/IO.cpp"
 #include "system/IDT.cpp"

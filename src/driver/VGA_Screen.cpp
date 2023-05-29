@@ -16,16 +16,6 @@
 #define DEFAULT_FOREGROUND FOREGROUND_WHITE
 
 uint_16 CursorPosition;
-void ClearScreen(uint_64 ClearColor = DEFAULT_BACKGROUND | DEFAULT_FOREGROUND){
-  uint_64 value =0;
-  value += ClearColor << 8;
-  value += ClearColor << 24;
-  value += ClearColor << 40;
-  value += ClearColor << 56;
-  for (uint_64* i = (uint_64*)VGA_MEMORY; i < (uint_64*)(VGA_MEMORY + 4000); i++){
-      *i = value;
-  }
-}
 
 void SetCursorPosition(uint_16 position){
 
@@ -37,6 +27,18 @@ void SetCursorPosition(uint_16 position){
   CursorPosition = position;
 }
 
+void ClearScreen(uint_64 ClearColor = DEFAULT_BACKGROUND | DEFAULT_FOREGROUND){
+  uint_64 value =0;
+  value += ClearColor << 8;
+  value += ClearColor << 24;
+  value += ClearColor << 40;
+  value += ClearColor << 56;
+  for (uint_64* i = (uint_64*)VGA_MEMORY; i < (uint_64*)(VGA_MEMORY + 4000); i++){
+      *i = value;
+  }
+  SetCursorPosition(0);
+}
+
 uint_16 PositionFromCoords(uint_8 x, uint_8 y){
   return y * VGA_WIDTH + x;
 }
@@ -44,8 +46,7 @@ uint_16 PositionFromCoords(uint_8 x, uint_8 y){
 void PrintString(const char* str, uint_8 color = DEFAULT_BACKGROUND | DEFAULT_FOREGROUND){
   uint_8* charPtr = (uint_8*)str;
   uint_16 index = CursorPosition;
-  while(*charPtr != 0)
-  {
+  while(*charPtr != 0){
     switch (*charPtr) {
       case 10:
         index+= VGA_WIDTH;
@@ -58,7 +59,6 @@ void PrintString(const char* str, uint_8 color = DEFAULT_BACKGROUND | DEFAULT_FO
       *(VGA_MEMORY + index * 2 + 1) = color;
       index++;
     }
-
     charPtr++;
   }
   SetCursorPosition(index);
