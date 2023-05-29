@@ -22,8 +22,10 @@ void StartScreen(){
     PrintString(" | |  | | '_ \\ / _ \\ '_ \\| |  | |\\___ \\ \n\r");
     PrintString(" | |__| | |_) |  __/ | | | |__| |____) |\n\r");
     PrintString("  \\____/| .__/ \\___|_| |_|\\____/|_____/ \n\r");
-    PrintString("        | | Alpha [v0.5.1]                \n\r");
-    PrintString("        |_| Copyright (c) 2023 MadMushroom \n\r");
+    PrintString("        | |                               \n\r");
+    PrintString("        |_|                                \n\r");
+	PrintVersion();
+	PrintString("Copyright (c) 2023 MadMushroom\n\r");
     PrintString("------------------------------------------\n\n\r");
 }
 

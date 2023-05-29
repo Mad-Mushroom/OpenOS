@@ -64,6 +64,10 @@ void PrintString(const char* str, uint_8 color = DEFAULT_BACKGROUND | DEFAULT_FO
   SetCursorPosition(index);
 }
 
+void PrintVersion(){
+  PrintString(VERSION);
+}
+
 void PrintChar(char chr, uint_8 color = DEFAULT_BACKGROUND | DEFAULT_FOREGROUND){
   *(VGA_MEMORY + CursorPosition * 2) = chr;
   *(VGA_MEMORY + CursorPosition * 2 + 1) = color;

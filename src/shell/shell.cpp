@@ -35,7 +35,8 @@ void ParseCommand(){
         index++;
     }args++;
 
-    if(char_contains(command, 5, "clear")) ClearScreen();
+    if(char_contains(command, 5, "clear")){ ClearScreen(); }
+    else if(char_contains(command, 4, "info")){ PrintString("\n\r"); PrintVersion(); }
     else { PrintString("\n\rCould not find command '"); PrintString(command); PrintString("'!\n\r"); }
     for(int i=0; i<128; i++) command[i] = 0;
     return;

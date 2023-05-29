@@ -8,6 +8,7 @@
 #pragma once
 
 /* Misc */
+#include "misc/OS_Info.h"
 #include "misc/KBScanCodeSet1.cpp"
 #include "misc/TextModeColorCodes.cpp"
 #include "misc/Typedefs.cpp"
