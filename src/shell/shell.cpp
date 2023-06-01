@@ -33,6 +33,14 @@ void displayHelp(){
     if(VERBOSE) printf("\n\rAren't you a Dev?\n\r");
 }
 
+void displayDevHelp(){
+    printf("\n\r== OpenOS Dev Help ==\n\n\r");
+    printf("scroll - scroll 1 time\n\r");
+    printf("devhelp - display this text\n\r");
+    
+    if(!VERBOSE) printf("\n\rHow do you now?\n\r");
+}
+
 void RunShell(){
     printf(shell.Username);
     printf("> ");
@@ -54,14 +62,18 @@ void ParseCommand(){
         index++;
     }
 
-    if(char_contains(arguments[0], "clear")){ ClearScreen(); }
+    if(arguments[0][0] == 0){ }
+    /* User Commands */
+    else if(char_contains(arguments[0], "clear")){ ClearScreen(); }
     else if(char_contains(arguments[0], "info")){ printf("\n\r"); PrintVersion(); }
     else if(char_contains(arguments[0], "shutdown")){ shutdown(); }
     else if(char_contains(arguments[0], "help")){ displayHelp(); }
     else if(char_contains(arguments[0], "echo")){ printf("\n\r"); for(int i=1; i<args; i++){ printf(arguments[i]); } }
+    /* Dev Commands */
+    else if(char_contains(arguments[0], "devhelp")){ displayDevHelp(); }
     else if(char_contains(arguments[0], "scroll")){ Scroll(1); }
     else if(char_contains(arguments[0], "template")){ printf("\n\r"); printf("You discovered a Easter Egg!\n\r"); }
-    else if(arguments[0][0] == 0){ }
+    /* Error Messages */
     else { printf("\n\rCould not find command '"); printf(arguments[0]); printf("'!\n\r"); }
     for(int i=0; i<128; i++) arguments[0][i] = 0;
     args = 0;
