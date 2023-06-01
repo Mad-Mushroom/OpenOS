@@ -9,6 +9,7 @@
 
 #include "../Kernel.h"
 #include "../lib/string.cpp"
+#include "../lib/stdio.cpp"
 
 class Shell {
     public:
@@ -19,12 +20,22 @@ class Shell {
 Shell shell;
 
 void initShell(){
-    shell.Username = "user";
+    shell.Username = "User";
+}
+
+void displayHelp(){
+    printf("\n\r== OpenOS Help ==\n\n\r");
+    printf("info - information about OS\n\r");
+    printf("clear - clears screen\n\r");
+    printf("shutdown - shutdown PC\n\r");
+    printf("help - display this text\n\r");
+    
+    if(VERBOSE) printf("\n\rAren't you a Dev?\n\r");
 }
 
 void RunShell(){
-    PrintString(shell.Username);
-    PrintString("> ");
+    printf(shell.Username);
+    printf("> ");
 }
 
 void ParseCommand(){
@@ -36,20 +47,22 @@ void ParseCommand(){
         command[index] = shell.command_buffer[index];
         index++;
     }args++;*/
+
     while(shell.command_buffer[index] != 0){
-        if(shell.command_buffer[index] == ' '){ args++; }
-        else arguments[args][index] = shell.command_buffer[index];
+        if(shell.command_buffer[index] == ' '){ args++; index++; }
+        else{ arguments[args][index] = shell.command_buffer[index]; }
         index++;
     }
-    
 
-    if(char_contains(arguments[0], 5, "clear")){ ClearScreen(); }
-    else if(char_contains(arguments[0], 4, "info")){ PrintString("\n\r"); PrintVersion(); }
-    else if(char_contains(arguments[0], 8, "template")){ PrintString("\n\r"); PrintString("You discovered a Easter Egg!\n\r"); }
-    else if(char_contains(arguments[0], 8, "shutdown")){ shutdown(); }
-    else if(char_contains(arguments[0], 4, "help")){ PrintString("\n\r== OpenOS Help ==\n\n\rinfo - information about OS\n\rclear - clears screen\n\rshutdown - shutdown PC\n\rhelp - display this text\n\r"); }
-    else if(char_contains(arguments[0], 4, "echo")){ for(int i=1; i<args; i++){ PrintString(arguments[i]); } PrintString("\n\r"); }
-    else { PrintString("\n\rCould not find command '"); PrintString(arguments[0]); PrintString("'!\n\r"); }
+    if(char_contains(arguments[0], "clear")){ ClearScreen(); }
+    else if(char_contains(arguments[0], "info")){ printf("\n\r"); PrintVersion(); }
+    else if(char_contains(arguments[0], "shutdown")){ shutdown(); }
+    else if(char_contains(arguments[0], "help")){ displayHelp(); }
+    else if(char_contains(arguments[0], "echo")){ printf("\n\r"); for(int i=1; i<args; i++){ printf(arguments[i]); } }
+    else if(char_contains(arguments[0], "scroll")){ Scroll(1); }
+    else if(char_contains(arguments[0], "template")){ printf("\n\r"); printf("You discovered a Easter Egg!\n\r"); }
+    else if(arguments[0][0] == 0){ }
+    else { printf("\n\rCould not find command '"); printf(arguments[0]); printf("'!\n\r"); }
     for(int i=0; i<128; i++) arguments[0][i] = 0;
     args = 0;
     index = 0;
@@ -57,10 +70,11 @@ void ParseCommand(){
 }
 
 void Shell_EnterPressed(){
+    if(CursorPosition > VGA_WIDTH * (VGA_HEIGHT - 1)) Scroll(1);
     ParseCommand();
     shell.bufferSize = 0;
     for(int i=0; i<128; i++) shell.command_buffer[i] = 0;
-    PrintString("\n\r");
+    printf("\n\r");
     RunShell();
 }
 

@@ -25,6 +25,7 @@ void shutdown();
 
 /* Librarys */
 #include "lib/string.cpp"
+#include "lib/stdio.cpp"
 
 /* Shell */
 #include "shell/shell.cpp"

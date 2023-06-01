@@ -44,6 +44,8 @@ void shutdown(){
 	ClearScreen(BACKGROUND_BLACK | FOREGROUND_YELLOW);
 	SetCursorPosition(PositionFromCoords(VGA_WIDTH/2-(33/2)-1, VGA_HEIGHT/2));
 	PrintString("It's safe to turn off the PC now.", BACKGROUND_BLACK | FOREGROUND_YELLOW); // 33
+	SetCursorPosition(PositionFromCoords(VGA_WIDTH/2-(14/2)-1, VGA_HEIGHT-1));
+	PrintString("System halted.", BACKGROUND_BLACK | FOREGROUND_RED);
 	SetCursorPosition(VGA_HEIGHT * VGA_WIDTH);
 	while(true) asm("hlt");
 }

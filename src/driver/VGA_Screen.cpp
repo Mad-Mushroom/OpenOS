@@ -9,7 +9,7 @@
 
 #include "../Kernel.h"
 
-#define VGA_MEMORY (uint_8*)0xb8000
+#define VGA_MEMORY (char*)0xb8000
 #define VGA_WIDTH 80
 #define VGA_HEIGHT 25
 #define DEFAULT_BACKGROUND BACKGROUND_BLUE
@@ -64,10 +64,6 @@ void PrintString(const char* str, uint_8 color = DEFAULT_BACKGROUND | DEFAULT_FO
   SetCursorPosition(index);
 }
 
-void PrintVersion(){
-  PrintString(VERSION);
-}
-
 void PrintChar(char chr, uint_8 color = DEFAULT_BACKGROUND | DEFAULT_FOREGROUND){
   *(VGA_MEMORY + CursorPosition * 2) = chr;
   *(VGA_MEMORY + CursorPosition * 2 + 1) = color;
@@ -75,15 +71,20 @@ void PrintChar(char chr, uint_8 color = DEFAULT_BACKGROUND | DEFAULT_FOREGROUND)
   SetCursorPosition(CursorPosition + 1);
 }
 
-void VGA_scrollback(int lines){
-    for (int y = lines; y < VGA_HEIGHT; y++)
-        for (int x = 0; x < VGA_WIDTH; x++)
-        {
-          SetCursorPosition(PositionFromCoords(x, y - lines));
-          PrintChar(((char)0xb8000) + (y * VGA_WIDTH + x));
-        }
-    //g_ScreenY -= lines;
-    CursorPosition -= VGA_WIDTH * lines;
+void PrintVersion(){
+  PrintString(VERSION);
+  PrintChar(' ');
+  PrintString(SVERSION);
+}
+
+void Scroll(int lines){
+  for (int y = lines; y < VGA_HEIGHT; y++){
+    for (int x = 0; x < VGA_WIDTH-1; x++){
+      SetCursorPosition(PositionFromCoords(x, y - lines));
+      PrintChar(*(VGA_MEMORY + (y * VGA_WIDTH + x) * 2));
+    }
+  }
+  CursorPosition -= VGA_WIDTH * (lines - 1);
 }
 
 char hexToStringOutput[128];

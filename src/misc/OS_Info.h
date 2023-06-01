@@ -7,5 +7,16 @@
 
 #pragma once
 
-#define VERSION "OpenOS Alpha [v0.5.9]\n\r"
 #define VERBOSE false
+
+#define VERSION "OpenOS Alpha [v0.5.9]"
+
+#if VERBOSE == true
+#define SVERSION "Dev Edition\n\r"
+#endif
+#if VERBOSE == false
+#define SVERSION ""
+#endif
+
+#define DEFAULT_BACKGROUND BACKGROUND_BLUE
+#define DEFAULT_FOREGROUND FOREGROUND_WHITE
