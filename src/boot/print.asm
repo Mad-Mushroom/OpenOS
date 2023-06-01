@@ -21,3 +21,6 @@ PrintString:
 	pop ax
 	pop bx
 	ret
+
+BootString:
+	db 'Loading OpenOS...', 0

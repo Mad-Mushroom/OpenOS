@@ -15,9 +15,6 @@ void shutdown();
 #include "misc/TextModeColorCodes.cpp"
 #include "misc/Typedefs.cpp"
 
-/* Librarys */
-#include "lib/string.cpp"
-
 /* System */
 #include "system/IO.cpp"
 #include "system/IDT.cpp"
@@ -25,6 +22,9 @@ void shutdown();
 /* Driver */
 #include "driver/VGA_Screen.cpp"
 #include "driver/Keyboard.cpp"
+
+/* Librarys */
+#include "lib/string.cpp"
 
 /* Shell */
 #include "shell/shell.cpp"

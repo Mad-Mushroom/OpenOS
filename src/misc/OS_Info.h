@@ -7,5 +7,5 @@
 
 #pragma once
 
-#define VERSION "OpenOS Alpha [v0.5.8]\n\r"
+#define VERSION "OpenOS Alpha [v0.5.9]\n\r"
 #define VERBOSE false

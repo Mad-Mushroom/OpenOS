@@ -8,6 +8,7 @@
 #pragma once
 
 #include "../Kernel.h"
+#include "../lib/string.cpp"
 
 class Shell {
     public:
@@ -35,14 +36,11 @@ void ParseCommand(){
         command[index] = shell.command_buffer[index];
         index++;
     }args++;*/
-    index = 0;
     while(shell.command_buffer[index] != 0){
-        if(shell.command_buffer[index] == ' '){ args++; index++; }
-        arguments[args][index] = shell.command_buffer[index];
+        if(shell.command_buffer[index] == ' '){ args++; }
+        else arguments[args][index] = shell.command_buffer[index];
         index++;
     }
-    //PrintString("\n\r");
-    //PrintString(shell.command_buffer);
     
 
     if(char_contains(arguments[0], 5, "clear")){ ClearScreen(); }
@@ -50,7 +48,7 @@ void ParseCommand(){
     else if(char_contains(arguments[0], 8, "template")){ PrintString("\n\r"); PrintString("You discovered a Easter Egg!\n\r"); }
     else if(char_contains(arguments[0], 8, "shutdown")){ shutdown(); }
     else if(char_contains(arguments[0], 4, "help")){ PrintString("\n\r== OpenOS Help ==\n\n\rinfo - information about OS\n\rclear - clears screen\n\rshutdown - shutdown PC\n\rhelp - display this text\n\r"); }
-    else if(char_contains(arguments[0], 4, "echo")){ for(int i=0; i<=args; i++){ PrintString(arguments[i]); } PrintString("\n\r"); }
+    else if(char_contains(arguments[0], 4, "echo")){ for(int i=1; i<args; i++){ PrintString(arguments[i]); } PrintString("\n\r"); }
     else { PrintString("\n\rCould not find command '"); PrintString(arguments[0]); PrintString("'!\n\r"); }
     for(int i=0; i<128; i++) arguments[0][i] = 0;
     args = 0;
