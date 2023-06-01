@@ -1,4 +1,3 @@
-export PATH=$PATH:/usr/local/i386elfgcc/bin
 export PATH="$PATH:/usr/local/x86_64elfgcc/bin"
 
 rm -rf bin/*
