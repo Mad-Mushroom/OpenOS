@@ -15,7 +15,7 @@
 #define SVERSION "Dev Edition\n\r"
 #endif
 #if VERBOSE == false
-#define SVERSION ""
+#define SVERSION "\n\r"
 #endif
 
 #define DEFAULT_BACKGROUND BACKGROUND_BLUE
