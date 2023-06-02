@@ -9,11 +9,11 @@
 
 #include "build.h"
 
-#define VERBOSE true
+#define VERBOSE false
 #define LIGHT false
 
 #define OS_VERSION "OpenOS Alpha [v0.5.9.7]"
-#define SHELL_VERSION "Shell [v0.6.1.1]\n\r"
+#define SHELL_VERSION "Shell [v0.6.1.2]\n\r"
 #define BUILD_VERSION BUILD_NUMBER // Month;Day;Year;BuildNumber
 
 #if VERBOSE == true
