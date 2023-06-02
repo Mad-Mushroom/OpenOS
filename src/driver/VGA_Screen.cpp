@@ -12,8 +12,6 @@
 #define VGA_MEMORY (char*)0xb8000
 #define VGA_WIDTH 80
 #define VGA_HEIGHT 25
-#define DEFAULT_BACKGROUND BACKGROUND_BLUE
-#define DEFAULT_FOREGROUND FOREGROUND_WHITE
 
 uint_16 CursorPosition;
 

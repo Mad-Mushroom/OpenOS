@@ -10,6 +10,7 @@
 #include "build.h"
 
 #define VERBOSE false
+#define LIGHT false
 
 #define OS_VERSION "OpenOS Alpha [v0.5.9.7]"
 #define SHELL_VERSION "Shell [v0.6.1.1]\n\r"
@@ -18,9 +19,12 @@
 #if VERBOSE == true
 #define SVERSION "Dev Edition\n\r"
 #endif
-#if VERBOSE == false
+#if LIGHT == true
+#define SVERSION "Light Edition\n\r"
+#endif
+#if VERBOSE == false && LIGHT == false
 #define SVERSION "\n\r"
 #endif
 
-#define DEFAULT_BACKGROUND BACKGROUND_BLUE
+#define DEFAULT_BACKGROUND BACKGROUND_BLACK
 #define DEFAULT_FOREGROUND FOREGROUND_WHITE

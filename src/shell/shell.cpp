@@ -51,10 +51,6 @@ void ParseCommand(){
     char arguments[8][16];
     uint_8 args;
     uint_8 index;
-    /*while(shell.command_buffer[index] != 0 && shell.command_buffer[index] != ' ' && args == 0){
-        command[index] = shell.command_buffer[index];
-        index++;
-    }args++;*/
 
     while(shell.command_buffer[index] != 0){
         if(shell.command_buffer[index] == ' '){ args++; index++; }
@@ -82,7 +78,8 @@ void ParseCommand(){
 }
 
 void Shell_EnterPressed(){
-    if(CursorPosition > VGA_WIDTH * (VGA_HEIGHT - 1)) Scroll(1);
+    if(CursorPosition > VGA_WIDTH * (VGA_HEIGHT - 1) && !LIGHT) Scroll(1);
+    if(CursorPosition > VGA_WIDTH * (VGA_HEIGHT - 1) && LIGHT) ClearScreen();
     ParseCommand();
     shell.bufferSize = 0;
     for(int i=0; i<128; i++) shell.command_buffer[i] = 0;

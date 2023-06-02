@@ -14,7 +14,7 @@ void BootScreen(){
 }
 
 void StartScreen(){
-	ClearScreen(BACKGROUND_BLUE | FOREGROUND_WHITE);
+	ClearScreen(DEFAULT_BACKGROUND | DEFAULT_FOREGROUND);
 	SetCursorPosition(PositionFromCoords(0, 0));
     PrintString("   ____                    ____   _____ \n\r");
     PrintString("  / __ \\                  / __ \\ / ____|\n\r");
