@@ -16,6 +16,7 @@ Screenshot from home screen (Build 06022336)
 * IDT
 * IO
 * Keyboard Handler
+* Shell
 
 ## License
 
