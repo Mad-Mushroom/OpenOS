@@ -52,9 +52,14 @@ void ParseCommand(){
     uint_8 args;
     uint_8 index;
 
+    if(VERBOSE) PrintString("\n\r");
     while(shell.command_buffer[index] != 0){
         if(shell.command_buffer[index] == ' '){ args++; index++; }
         else{ arguments[args][index] = shell.command_buffer[index]; }
+        if(VERBOSE) PrintChar(shell.command_buffer[index]);
+        if(VERBOSE) PrintString(" - ");
+        if(VERBOSE) PrintChar(arguments[args][index]);
+        if(VERBOSE) PrintString("\n\r");
         index++;
     }
 

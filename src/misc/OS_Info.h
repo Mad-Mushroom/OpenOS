@@ -9,7 +9,7 @@
 
 #include "build.h"
 
-#define VERBOSE false
+#define VERBOSE true
 #define LIGHT false
 
 #define OS_VERSION "OpenOS Alpha [v0.5.9.7]"
