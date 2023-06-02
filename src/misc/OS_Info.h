@@ -7,9 +7,13 @@
 
 #pragma once
 
+#include "build.h"
+
 #define VERBOSE false
 
-#define VERSION "OpenOS Alpha [v0.5.9.7]"
+#define OS_VERSION "OpenOS Alpha [v0.5.9.7]"
+#define SHELL_VERSION "Shell [v0.6.1.1]\n\r"
+#define BUILD_VERSION BUILD_NUMBER // Month;Day;Year;BuildNumber
 
 #if VERBOSE == true
 #define SVERSION "Dev Edition\n\r"

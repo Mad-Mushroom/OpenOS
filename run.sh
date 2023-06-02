@@ -1,6 +1,15 @@
 export PATH="$PATH:/usr/local/x86_64elfgcc/bin"
 
+BUILDNUMBER=$(<build.txt)
+
+BUILDNUMBER=$((BUILDNUMBER+1))
+
 rm -rf bin/*
+rm src/misc/build.h
+
+echo "#pragma once
+#define BUILD_NUMBER \"$BUILDNUMBER\"" > src/misc/build.h
+echo "$BUILDNUMBER" > build.txt
 
 nasm src/boot/bootloader.asm -f bin -o bin/bootloader.bin
 nasm src/boot/ExtendedProgram.asm -f elf64 -o bin/ExtendedProgram.o

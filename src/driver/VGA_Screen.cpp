@@ -71,10 +71,16 @@ void PrintChar(char chr, uint_8 color = DEFAULT_BACKGROUND | DEFAULT_FOREGROUND)
   SetCursorPosition(CursorPosition + 1);
 }
 
-void PrintVersion(){
-  PrintString(VERSION);
+void PrintVersion(bool detailed = false){
+  PrintString(OS_VERSION);
   PrintChar(' ');
   PrintString(SVERSION);
+  if(detailed){
+    PrintString(SHELL_VERSION);
+    PrintString("Build ");
+    PrintString(BUILD_VERSION);
+    PrintString("\n\r");
+  }
 }
 
 void Scroll(int lines){

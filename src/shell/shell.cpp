@@ -65,7 +65,7 @@ void ParseCommand(){
     if(arguments[0][0] == 0){ }
     /* User Commands */
     else if(char_contains(arguments[0], "clear")){ ClearScreen(); }
-    else if(char_contains(arguments[0], "info")){ printf("\n\r"); PrintVersion(); }
+    else if(char_contains(arguments[0], "info")){ printf("\n\r"); PrintVersion(true); }
     else if(char_contains(arguments[0], "shutdown")){ shutdown(); }
     else if(char_contains(arguments[0], "help")){ displayHelp(); }
     else if(char_contains(arguments[0], "echo")){ printf("\n\r"); for(int i=1; i<args; i++){ printf(arguments[i]); } }
