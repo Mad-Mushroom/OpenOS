@@ -65,6 +65,7 @@ void ParseCommand(){
     else if(char_contains(arguments[0], "shutdown")){ shutdown(); }
     else if(char_contains(arguments[0], "help")){ displayHelp(); }
     else if(char_contains(arguments[0], "echo")){ printf("\n\r"); for(int i=1; i<args; i++){ printf(arguments[i]); } }
+    else if(char_contains(arguments[0], "lines")){ printf("\n\r"); printf("Total lines of code: "); printf(TOTAL_LINES); printf("\n\r"); }
     /* Dev Commands */
     else if(char_contains(arguments[0], "devhelp")){ displayDevHelp(); }
     else if(char_contains(arguments[0], "scroll")){ Scroll(1); }

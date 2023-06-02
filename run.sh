@@ -4,12 +4,15 @@ BUILDNUMBER=$(<build.txt)
 BUILDNUMBER=$((BUILDNUMBER+1))
 echo "$BUILDNUMBER" > build.txt
 current_date=$(date +"%m%d%y")
+tmp=$(cloc --quiet src)
+total_lines=$(echo "$tmp" | grep "SUM:" | awk '{print $NF}')
 
 rm -rf bin/*
 rm src/misc/build.h
 
 echo "#pragma once
-#define BUILD_NUMBER \"$current_date$BUILDNUMBER\"" > src/misc/build.h
+#define BUILD_NUMBER \"$current_date$BUILDNUMBER\"
+#define TOTAL_LINES \"$total_lines\"" > src/misc/build.h
 
 nasm src/boot/bootloader.asm -f bin -o bin/bootloader.bin
 nasm src/boot/ExtendedProgram.asm -f elf64 -o bin/ExtendedProgram.o
