@@ -48,6 +48,7 @@ void PrintString(const char* str, uint_8 color = DEFAULT_BACKGROUND | DEFAULT_FO
     switch (*charPtr) {
       case 10:
         index+= VGA_WIDTH;
+        index -= index % VGA_WIDTH;
         break;
       case 13:
         index -= index % VGA_WIDTH;

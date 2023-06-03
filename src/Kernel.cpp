@@ -16,28 +16,28 @@ void BootScreen(){
 void StartScreen(){
 	ClearScreen(DEFAULT_BACKGROUND | DEFAULT_FOREGROUND);
 	SetCursorPosition(PositionFromCoords(0, 0));
-    PrintString("   ____                    ____   _____ \n\r");
-    PrintString("  / __ \\                  / __ \\ / ____|\n\r");
-    PrintString(" | |  | |_ __   ___ _ __ | |  | | (___  \n\r");
-    PrintString(" | |  | | '_ \\ / _ \\ '_ \\| |  | |\\___ \\ \n\r");
-    PrintString(" | |__| | |_) |  __/ | | | |__| |____) |\n\r");
-    PrintString("  \\____/| .__/ \\___|_| |_|\\____/|_____/ \n\r");
-    PrintString("        | |                               \n\r");
-    PrintString("        |_|                                \n\r");
+    PrintString("   ____                    ____   _____ \n");
+    PrintString("  / __ \\                  / __ \\ / ____|\n");
+    PrintString(" | |  | |_ __   ___ _ __ | |  | | (___  \n");
+    PrintString(" | |  | | '_ \\ / _ \\ '_ \\| |  | |\\___ \\ \n");
+    PrintString(" | |__| | |_) |  __/ | | | |__| |____) |\n");
+    PrintString("  \\____/| .__/ \\___|_| |_|\\____/|_____/ \n");
+    PrintString("        | |                               \n");
+    PrintString("        |_|                                \n");
 	PrintVersion();
-	PrintString("Copyright (c) 2023 MadMushroom\n\r");
-    PrintString("------------------------------------------\n\n\r");
+	PrintString("Copyright (c) 2023 MadMushroom\n");
+    PrintString("------------------------------------------\n\n");
 }
 
 void init(){
-	if(VERBOSE == true) PrintString("\n\n\rInitialized Verbose Mode.");
+	if(VERBOSE == true) PrintString("\n\nInitialized Verbose Mode.");
 	InitializeIDT();
-	if(VERBOSE == true) PrintString("\n\rInitialized IDT.");
+	if(VERBOSE == true) PrintString("\nInitialized IDT.");
 	MainKeyboardHandler = KeyboardHandler;
-	if(VERBOSE == true) PrintString("\n\rInitialized Keyboard Handler.");
+	if(VERBOSE == true) PrintString("\nInitialized Keyboard Handler.");
 	initShell();
-	if(VERBOSE == true) PrintString("\n\rInitialized Shell.");
-	if(VERBOSE == true) PrintString("\n\n\rDone.");
+	if(VERBOSE == true) PrintString("\nInitialized Shell.");
+	if(VERBOSE == true) PrintString("\n\nDone.");
 }
 
 void shutdown(){

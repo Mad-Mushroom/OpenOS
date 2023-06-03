@@ -24,21 +24,21 @@ void initShell(){
 }
 
 void displayHelp(){
-    printf("\n\r== OpenOS Help ==\n\n\r");
-    printf("info - information about OS\n\r");
-    printf("clear - clears screen\n\r");
-    printf("shutdown - shutdown PC\n\r");
-    printf("help - display this text\n\r");
+    printf("\n== OpenOS Help ==\n\n");
+    printf("info - information about OS\n");
+    printf("clear - clears screen\n");
+    printf("shutdown - shutdown PC\n");
+    printf("help - display this text\n");
     
-    if(VERBOSE) printf("\n\rAren't you a Dev?\n\r");
+    if(VERBOSE) printf("\nAren't you a Dev?\n");
 }
 
 void displayDevHelp(){
-    printf("\n\r== OpenOS Dev Help ==\n\n\r");
-    printf("scroll - scroll 1 time\n\r");
-    printf("devhelp - display this text\n\r");
+    printf("\n== OpenOS Dev Help ==\n\n");
+    printf("scroll - scroll 1 time\n");
+    printf("devhelp - display this text\n");
     
-    if(!VERBOSE) printf("\n\rHow do you now?\n\r");
+    if(!VERBOSE) printf("\nHow do you now?\n");
 }
 
 void RunShell(){
@@ -52,31 +52,31 @@ void ParseCommand(){
     uint_8 args;
     uint_8 index;
 
-    if(VERBOSE) PrintString("\n\r");
+    if(VERBOSE) PrintString("\n");
     while(shell.command_buffer[index] != 0){
         if(shell.command_buffer[index] == ' '){ args++; index++; }
         else{ arguments[args][index] = shell.command_buffer[index]; }
         if(VERBOSE) PrintChar(shell.command_buffer[index]);
         if(VERBOSE) PrintString(" - ");
         if(VERBOSE) PrintChar(arguments[args][index]);
-        if(VERBOSE) PrintString("\n\r");
+        if(VERBOSE) PrintString("\n");
         index++;
     }
 
     if(arguments[0][0] == 0){ }
     /* User Commands */
     else if(char_contains(arguments[0], "clear")){ ClearScreen(); }
-    else if(char_contains(arguments[0], "info")){ printf("\n\r"); PrintVersion(true); }
+    else if(char_contains(arguments[0], "info")){ printf("\n"); PrintVersion(true); }
     else if(char_contains(arguments[0], "shutdown")){ shutdown(); }
     else if(char_contains(arguments[0], "help")){ displayHelp(); }
-    else if(char_contains(arguments[0], "echo")){ printf("\n\r"); for(int i=1; i<args; i++){ printf(arguments[i]); } }
-    else if(char_contains(arguments[0], "lines")){ printf("\n\r"); printf("Total lines of code: "); printf(TOTAL_LINES); printf("\n\r"); }
+    else if(char_contains(arguments[0], "echo")){ printf("\n"); for(int i=1; i<args; i++){ printf(arguments[i]); } }
+    else if(char_contains(arguments[0], "lines")){ printf("\n"); printf("Total lines of code: "); printf(TOTAL_LINES); printf("\n"); }
     /* Dev Commands */
     else if(char_contains(arguments[0], "devhelp")){ displayDevHelp(); }
     else if(char_contains(arguments[0], "scroll")){ Scroll(1); }
-    else if(char_contains(arguments[0], "template")){ printf("\n\r"); printf("You discovered a Easter Egg!\n\r"); }
+    else if(char_contains(arguments[0], "template")){ printf("\n"); printf("You discovered a Easter Egg!\n"); }
     /* Error Messages */
-    else { printf("\n\rCould not find command '"); printf(arguments[0]); printf("'!\n\r"); }
+    else { printf("\n\rCould not find command '"); printf(arguments[0]); printf("'!\n"); }
     for(int i=0; i<128; i++) arguments[0][i] = 0;
     args = 0;
     index = 0;
