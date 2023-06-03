@@ -9,7 +9,7 @@
 
 #include "../Kernel.h"
 
-bool char_containsLen(char arr[], uint_8 len, const char* ch){
+/*bool char_containsLen(char arr[], uint_8 len, const char* ch){
     if(len <= 0) return false;
     char cch[len];
     uint_8* charPtr = (uint_8*)ch;
@@ -57,4 +57,15 @@ bool char_contains(char arr[], const char* ch){
         result = 0;
         return false;
     }
+}*/
+
+bool char_contains(char arr[], const char* ch){
+    while (*arr && *ch) {
+        if (*arr != *ch) {
+            return false;
+        }
+        arr++;
+        ch++;
+    }
+    return (*arr == '\0' && *ch == '\0');
 }

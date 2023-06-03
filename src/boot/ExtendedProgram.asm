@@ -7,8 +7,6 @@
 jmp EnterProtectedMode
 
 %include "src/boot/gdt.asm"
-%include "src/boot/print.asm"
-
 
 EnterProtectedMode:
 	call EnableA20
