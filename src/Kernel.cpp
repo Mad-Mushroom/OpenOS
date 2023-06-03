@@ -7,6 +7,8 @@
 
 #include "Kernel.h"
 
+extern const char BetaFish[];
+
 void BootScreen(){
 	ClearScreen(BACKGROUND_BLACK | FOREGROUND_WHITE);
 	SetCursorPosition(PositionFromCoords(0, 0));
@@ -27,6 +29,7 @@ void StartScreen(){
 	PrintVersion();
 	PrintString("Copyright (c) 2023 MadMushroom\n");
     PrintString("------------------------------------------\n\n");
+	//PrintString(BetaFish);
 }
 
 void init(){
