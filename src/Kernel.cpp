@@ -7,6 +7,7 @@
 
 #include "Kernel.h"
 
+extern const char License[];
 extern const char BetaFish[];
 
 void BootScreen(){
@@ -51,6 +52,10 @@ void shutdown(){
 	PrintString("System halted.", BACKGROUND_BLACK | FOREGROUND_RED);
 	SetCursorPosition(VGA_HEIGHT * VGA_WIDTH);
 	while(true) asm("hlt");
+}
+
+void license(){
+	PrintString(License);
 }
 
 extern "C" void _start() {

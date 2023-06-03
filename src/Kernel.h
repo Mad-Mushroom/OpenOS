@@ -7,6 +7,7 @@
 
 #pragma once
 
+void license();
 void shutdown();
 
 /* Misc */

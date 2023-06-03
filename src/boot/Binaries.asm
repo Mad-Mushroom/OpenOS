@@ -13,4 +13,5 @@
   %1_size: dq %1_size - %1
 %endmacro
 
+IncBin License, "src/extern/license.txt"
 IncBin BetaFish, "src/extern/beta.txt"
