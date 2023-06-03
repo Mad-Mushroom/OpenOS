@@ -16,6 +16,9 @@ class Shell {
         const char* Username;
         char command_buffer[256];
         uint_8 bufferSize;
+        //char history[64][256];
+        //uint_8 historySize;
+        //uint_8 currentHistory;
 };
 Shell shell;
 
@@ -115,6 +118,10 @@ void ParseCommand(){
     else if(char_contains(arguments[0], "template")){ printf("\n"); printf("You discovered a Easter Egg!\n"); }
     /* Error Messages */
     else { printf("\n\rCould not find command '"); printf(arguments[0]); printf("'!\n"); }
+    //for(int i=0; i<shell.bufferSize; i++){
+        //shell.history[shell.historySize][i] = shell.command_buffer[i];
+    //}
+    //shell.historySize++;
     for(int i=0; i<128; i++) arguments[0][i] = 0;
     args = 0;
     index = 0;
@@ -139,6 +146,12 @@ void Shell_BackspacePressed(){
         shell.command_buffer[shell.bufferSize] = 0;
         shell.bufferSize--;
     }
+}
+
+void Shell_UpPressed(){
+    //shell.command_buffer[0] = shell.history[shell.historySize-shell.currentHistory][0];
+    PrintChar('E');
+    //shell.currentHistory++;
 }
 
 void Shell_AddChar(char chr){
