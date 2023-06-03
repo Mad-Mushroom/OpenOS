@@ -30,7 +30,11 @@ void StartScreen(){
     PrintString("        |_|                                \n");
 	PrintVersion();
 	PrintString("Copyright (c) 2023 MadMushroom\n");
-    //PrintString("------------------------------------------\n\n");
+    if(LIGHT) PrintString("------------------------------------------\n\n");
+	if(!LIGHT) PrintString(Alpha);
+}
+
+void ALPHA(){
 	PrintString(Alpha);
 }
 

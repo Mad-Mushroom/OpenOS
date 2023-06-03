@@ -47,6 +47,22 @@ void displayDevHelp(){
     if(!VERBOSE) printf("\nHow do you now?\n");
 }
 
+void info(char* argument){
+    if(char_contains(argument, "-d")){
+        PrintVersion(true);
+        ALPHA();
+    }
+    else if(char_contains(argument, "-s")){
+        PrintVersion(true);
+    }
+    else if(!char_contains(argument, "")){
+        PrintString("Invalid option, use -d for detailed, -s for simple and nothing for normal.\n");
+    }
+    else{
+        PrintVersion(true);
+    }
+}
+
 void RunShell(){
     printf(shell.Username);
     printf("> ");
@@ -87,7 +103,7 @@ void ParseCommand(){
     if(arguments[0][0] == 0){ }
     /* User Commands */
     else if(char_contains(arguments[0], "clear")){ ClearScreen(); }
-    else if(char_contains(arguments[0], "info")){ printf("\n"); PrintVersion(true); }
+    else if(char_contains(arguments[0], "info")){ printf("\n"); info(arguments[1]); }
     else if(char_contains(arguments[0], "shutdown")){ shutdown(); }
     else if(char_contains(arguments[0], "help")){ displayHelp(); }
     else if(char_contains(arguments[0], "echo")){ printf("\n"); for(int i=1; i<=args; i++){ printf(arguments[i]); printf(" "); } printf("\n"); }

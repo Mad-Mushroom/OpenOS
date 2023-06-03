@@ -10,6 +10,8 @@
 void license();
 void shutdown();
 
+void ALPHA();
+
 /* Misc */
 #include "misc/OS_Info.h"
 #include "misc/KBScanCodeSet1.cpp"

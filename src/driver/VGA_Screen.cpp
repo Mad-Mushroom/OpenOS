@@ -90,7 +90,7 @@ void PrintVersion(bool detailed = false){
     PrintString(SHELL_VERSION);
     PrintString("Build ");
     PrintString(BUILD_VERSION);
-    PrintString("\n\r");
+    PrintString("\n");
   }
 }
 
