@@ -14,7 +14,7 @@
 class Shell {
     public:
         const char* Username;
-        char command_buffer[128];
+        char command_buffer[256];
         uint_8 bufferSize;
 };
 Shell shell;
@@ -51,19 +51,31 @@ void ParseCommand(){
     char arguments[8][16];
     uint_8 args;
     uint_8 index;
-
-    arguments[1][0] = 'E';
-    arguments[1][1] = 'A';
+    uint_8 argindex;
 
     if(VERBOSE) PrintString("\n");
     while(shell.command_buffer[index] != 0){
-        if(shell.command_buffer[index] == ' '){ args++; index++; }
-        else{ arguments[args][index] = shell.command_buffer[index]; }
-        if(VERBOSE) PrintChar(shell.command_buffer[index]);
-        if(VERBOSE) PrintString(" - ");
-        if(VERBOSE) PrintChar(arguments[args][index]);
-        if(VERBOSE) PrintString("\n");
-        index++;
+        if(shell.command_buffer[index] == ' '){
+            arguments[args][argindex] = 0;
+            args++;
+            index++;
+            argindex = 0;
+        }
+        else{ 
+            arguments[args][argindex] = shell.command_buffer[index];
+            if(VERBOSE) PrintChar(shell.command_buffer[index]);
+            if(VERBOSE) PrintString(" - ");
+            if(VERBOSE) PrintChar(arguments[args][argindex]);
+            if(VERBOSE) PrintString(" -- ");
+            if(VERBOSE) PrintString(IntegerToString(index));
+            if(VERBOSE) PrintString(" - ");
+            if(VERBOSE) PrintString(IntegerToString(argindex));
+            if(VERBOSE) PrintString(" -- ");
+            if(VERBOSE) PrintString(IntegerToString(args));
+            if(VERBOSE) PrintString("\n");
+            index++;
+            argindex++;
+        }
     }
 
     if(arguments[0][0] == 0){ }
