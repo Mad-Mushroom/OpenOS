@@ -19,6 +19,12 @@ class Shell {
 };
 Shell shell;
 
+void printf(const char* str, uint_8 color = DEFAULT_BACKGROUND | DEFAULT_FOREGROUND){
+    //if(CursorPosition > VGA_WIDTH * (VGA_HEIGHT - 1) && !LIGHT) Scroll(1);
+    //if(CursorPosition > VGA_WIDTH * (VGA_HEIGHT - 1) && LIGHT) ClearScreen();
+    PrintString(str, color);
+}
+
 void initShell(){
     shell.Username = "User";
 }
@@ -105,7 +111,7 @@ void Shell_EnterPressed(){
     ParseCommand();
     shell.bufferSize = 0;
     for(int i=0; i<128; i++) shell.command_buffer[i] = 0;
-    printf("\n\r");
+    printf("\n");
     RunShell();
 }
 

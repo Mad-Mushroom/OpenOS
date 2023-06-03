@@ -14,4 +14,5 @@
 %endmacro
 
 IncBin License, "src/extern/license.txt"
+IncBin Alpha, "src/extern/alpha.txt"
 IncBin BetaFish, "src/extern/beta.txt"

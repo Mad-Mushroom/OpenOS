@@ -8,6 +8,7 @@
 #include "Kernel.h"
 
 extern const char License[];
+extern const char Alpha[];
 extern const char BetaFish[];
 
 void BootScreen(){
@@ -29,8 +30,8 @@ void StartScreen(){
     PrintString("        |_|                                \n");
 	PrintVersion();
 	PrintString("Copyright (c) 2023 MadMushroom\n");
-    PrintString("------------------------------------------\n\n");
-	//PrintString(BetaFish);
+    //PrintString("------------------------------------------\n\n");
+	PrintString(Alpha);
 }
 
 void init(){

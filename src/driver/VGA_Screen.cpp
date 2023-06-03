@@ -41,12 +41,31 @@ uint_16 PositionFromCoords(uint_8 x, uint_8 y){
   return y * VGA_WIDTH + x;
 }
 
+void PrintChar(char chr, uint_8 color = DEFAULT_BACKGROUND | DEFAULT_FOREGROUND){
+  *(VGA_MEMORY + CursorPosition * 2) = chr;
+  *(VGA_MEMORY + CursorPosition * 2 + 1) = color;
+
+  SetCursorPosition(CursorPosition + 1);
+}
+
+void Scroll(int lines){
+  for (int y = lines; y < VGA_HEIGHT; y++){
+    for (int x = 0; x < VGA_WIDTH-1; x++){
+      SetCursorPosition(PositionFromCoords(x, y - lines));
+      PrintChar(*(VGA_MEMORY + (y * VGA_WIDTH + x) * 2));
+    }
+  }
+  CursorPosition -= VGA_WIDTH * (lines - 1);
+}
+
 void PrintString(const char* str, uint_8 color = DEFAULT_BACKGROUND | DEFAULT_FOREGROUND){
   uint_8* charPtr = (uint_8*)str;
   uint_16 index = CursorPosition;
   while(*charPtr != 0){
     switch (*charPtr) {
       case 10:
+        if(index > VGA_WIDTH * (VGA_HEIGHT - 1) && !LIGHT) Scroll(1);
+        if(index > VGA_WIDTH * (VGA_HEIGHT - 1) && LIGHT) ClearScreen();
         index+= VGA_WIDTH;
         index -= index % VGA_WIDTH;
         break;
@@ -63,13 +82,6 @@ void PrintString(const char* str, uint_8 color = DEFAULT_BACKGROUND | DEFAULT_FO
   SetCursorPosition(index);
 }
 
-void PrintChar(char chr, uint_8 color = DEFAULT_BACKGROUND | DEFAULT_FOREGROUND){
-  *(VGA_MEMORY + CursorPosition * 2) = chr;
-  *(VGA_MEMORY + CursorPosition * 2 + 1) = color;
-
-  SetCursorPosition(CursorPosition + 1);
-}
-
 void PrintVersion(bool detailed = false){
   PrintString(OS_VERSION);
   PrintChar(' ');
@@ -80,16 +92,6 @@ void PrintVersion(bool detailed = false){
     PrintString(BUILD_VERSION);
     PrintString("\n\r");
   }
-}
-
-void Scroll(int lines){
-  for (int y = lines; y < VGA_HEIGHT; y++){
-    for (int x = 0; x < VGA_WIDTH-1; x++){
-      SetCursorPosition(PositionFromCoords(x, y - lines));
-      PrintChar(*(VGA_MEMORY + (y * VGA_WIDTH + x) * 2));
-    }
-  }
-  CursorPosition -= VGA_WIDTH * (lines - 1);
 }
 
 char hexToStringOutput[128];
