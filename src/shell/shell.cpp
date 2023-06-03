@@ -52,6 +52,9 @@ void ParseCommand(){
     uint_8 args;
     uint_8 index;
 
+    arguments[1][0] = 'E';
+    arguments[1][1] = 'A';
+
     if(VERBOSE) PrintString("\n");
     while(shell.command_buffer[index] != 0){
         if(shell.command_buffer[index] == ' '){ args++; index++; }
@@ -69,7 +72,7 @@ void ParseCommand(){
     else if(char_contains(arguments[0], "info")){ printf("\n"); PrintVersion(true); }
     else if(char_contains(arguments[0], "shutdown")){ shutdown(); }
     else if(char_contains(arguments[0], "help")){ displayHelp(); }
-    else if(char_contains(arguments[0], "echo")){ printf("\n"); for(int i=1; i<args; i++){ printf(arguments[i]); } }
+    else if(char_contains(arguments[0], "echo")){ printf("\n"); for(int i=1; i<=args; i++){ printf(arguments[i]); printf(" "); } printf("\n"); }
     else if(char_contains(arguments[0], "lines")){ printf("\n"); printf("Total lines of code: "); printf(TOTAL_LINES); printf("\n"); }
     else if(char_contains(arguments[0], "license")){ printf("\n"); license(); }
     /* Dev Commands */
