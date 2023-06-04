@@ -38,6 +38,10 @@ void ALPHA(){
 	PrintString(Alpha);
 }
 
+void BETA(){
+	PrintString(BetaFish);
+}
+
 void init(){
 	if(VERBOSE == true) PrintString("\n\nInitialized Verbose Mode.");
 	InitializeIDT();

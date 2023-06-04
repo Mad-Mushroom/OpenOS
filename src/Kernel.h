@@ -11,6 +11,7 @@ void license();
 void shutdown();
 
 void ALPHA();
+void BETA();
 
 /* Misc */
 #include "misc/OS_Info.h"
