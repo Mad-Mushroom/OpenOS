@@ -16,17 +16,8 @@ class Shell {
         const char* Username;
         char command_buffer[256];
         uint_8 bufferSize;
-        //char history[64][256];
-        //uint_8 historySize;
-        //uint_8 currentHistory;
 };
 Shell shell;
-
-void printf(const char* str, uint_8 color = DEFAULT_BACKGROUND | DEFAULT_FOREGROUND){
-    //if(CursorPosition > VGA_WIDTH * (VGA_HEIGHT - 1) && !LIGHT) Scroll(1);
-    //if(CursorPosition > VGA_WIDTH * (VGA_HEIGHT - 1) && LIGHT) ClearScreen();
-    PrintString(str, color);
-}
 
 void initShell(){
     shell.Username = "User";
@@ -72,7 +63,6 @@ void RunShell(){
 }
 
 void ParseCommand(){
-    //char command[128];
     char arguments[8][16];
     uint_8 args;
     uint_8 index;
@@ -118,10 +108,6 @@ void ParseCommand(){
     else if(char_contains(arguments[0], "template")){ printf("\n"); printf("You discovered a Easter Egg!\n"); }
     /* Error Messages */
     else { printf("\n\rCould not find command '"); printf(arguments[0]); printf("'!\n"); }
-    //for(int i=0; i<shell.bufferSize; i++){
-        //shell.history[shell.historySize][i] = shell.command_buffer[i];
-    //}
-    //shell.historySize++;
     for(int i=0; i<128; i++) arguments[0][i] = 0;
     args = 0;
     index = 0;
@@ -149,9 +135,7 @@ void Shell_BackspacePressed(){
 }
 
 void Shell_UpPressed(){
-    //shell.command_buffer[0] = shell.history[shell.historySize-shell.currentHistory][0];
     PrintChar('E');
-    //shell.currentHistory++;
 }
 
 void Shell_AddChar(char chr){

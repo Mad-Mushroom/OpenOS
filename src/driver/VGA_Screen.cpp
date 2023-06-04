@@ -64,8 +64,8 @@ void PrintString(const char* str, uint_8 color = DEFAULT_BACKGROUND | DEFAULT_FO
   while(*charPtr != 0){
     switch (*charPtr) {
       case 10:
-        if(index > VGA_WIDTH * (VGA_HEIGHT - 1) && !LIGHT) Scroll(1);
-        if(index > VGA_WIDTH * (VGA_HEIGHT - 1) && LIGHT) ClearScreen();
+        //if(index > VGA_WIDTH * (VGA_HEIGHT - 1) && !LIGHT) Scroll(1);
+        //if(index > VGA_WIDTH * (VGA_HEIGHT - 1) && LIGHT) ClearScreen();
         index+= VGA_WIDTH;
         index -= index % VGA_WIDTH;
         break;

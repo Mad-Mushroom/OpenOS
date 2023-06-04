@@ -26,9 +26,5 @@ void ALPHA();
 #include "driver/VGA_Screen.cpp"
 #include "driver/Keyboard.cpp"
 
-/* Librarys */
-#include "lib/string.cpp"
-#include "lib/stdio.cpp"
-
 /* Shell */
 #include "shell/shell.cpp"
