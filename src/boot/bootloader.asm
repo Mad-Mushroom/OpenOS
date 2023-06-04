@@ -21,6 +21,8 @@ jmp PROGRAM_SPACE
 %include "src/boot/print.asm"
 %include "src/boot/DiskRead.asm"
 
+jmp $
+
 times 510-($-$$) db 0
 
 dw 0xaa55
