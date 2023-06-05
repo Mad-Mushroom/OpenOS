@@ -7,6 +7,7 @@
 
 #include "Kernel.h"
 
+extern const char Logo[];
 extern const char License[];
 extern const char Alpha[];
 extern const char BetaFish[];
@@ -20,14 +21,15 @@ void BootScreen(){
 void StartScreen(){
 	ClearScreen(DEFAULT_BACKGROUND | DEFAULT_FOREGROUND);
 	SetCursorPosition(0);
-    PrintString("   ____                    ____   _____ \n");
+    /*PrintString("   ____                    ____   _____ \n");
     PrintString("  / __ \\                  / __ \\ / ____|\n");
     PrintString(" | |  | |_ __   ___ _ __ | |  | | (___  \n");
     PrintString(" | |  | | '_ \\ / _ \\ '_ \\| |  | |\\___ \\ \n");
     PrintString(" | |__| | |_) |  __/ | | | |__| |____) |\n");
     PrintString("  \\____/| .__/ \\___|_| |_|\\____/|_____/ \n");
     PrintString("        | |                               \n");
-    PrintString("        |_|                                \n");
+    PrintString("        |_|                                \n");*/
+	PrintString(Logo);
 	PrintVersion();
 	PrintString("Copyright (c) 2023 MadMushroom\n");
     if(LIGHT) PrintString("------------------------------------------\n\n");

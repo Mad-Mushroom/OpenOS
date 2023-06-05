@@ -13,6 +13,7 @@
   %1_size: dq %1_size - %1
 %endmacro
 
+IncBin Logo, "src/extern/logo.txt"
 IncBin License, "src/extern/license.txt"
 IncBin Alpha, "src/extern/alpha.txt"
 IncBin BetaFish, "src/extern/beta.txt"
