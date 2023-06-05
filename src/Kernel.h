@@ -8,7 +8,7 @@
 #pragma once
 
 void license();
-void shutdown();
+void shutdown(bool noShowMode);
 
 void ALPHA();
 void BETA();
@@ -20,6 +20,7 @@ void BETA();
 #include "misc/Typedefs.cpp"
 
 /* System */
+#include "system/panic.cpp"
 #include "system/IO.cpp"
 #include "system/IDT.cpp"
 

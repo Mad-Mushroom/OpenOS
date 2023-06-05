@@ -20,11 +20,9 @@ void StandardKeyboardHandler(uint_8 scanCode, uint_8 chr) {
 		{
 		case true:
 			Shell_AddChar(chr - 32);
-			PrintChar(chr - 32);
 			break;
 		case false:
 			Shell_AddChar(chr);
-			PrintChar(chr);
 			break;
 		}
 

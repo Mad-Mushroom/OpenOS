@@ -13,13 +13,13 @@ extern const char BetaFish[];
 
 void BootScreen(){
 	ClearScreen(BACKGROUND_BLACK | FOREGROUND_WHITE);
-	SetCursorPosition(PositionFromCoords(0, 0));
+	SetCursorPosition(0);
 	PrintString("Starting OpenOS...", BACKGROUND_BLACK | FOREGROUND_WHITE);
 }
 
 void StartScreen(){
 	ClearScreen(DEFAULT_BACKGROUND | DEFAULT_FOREGROUND);
-	SetCursorPosition(PositionFromCoords(0, 0));
+	SetCursorPosition(0);
     PrintString("   ____                    ____   _____ \n");
     PrintString("  / __ \\                  / __ \\ / ____|\n");
     PrintString(" | |  | |_ __   ___ _ __ | |  | | (___  \n");
@@ -53,12 +53,13 @@ void init(){
 	if(VERBOSE == true) PrintString("\n\nDone.");
 }
 
-void shutdown(){
-	ClearScreen(BACKGROUND_BLACK | FOREGROUND_YELLOW);
-	SetCursorPosition(PositionFromCoords(VGA_WIDTH/2-(33/2)-1, VGA_HEIGHT/2));
-	PrintString("It's safe to turn off the PC now.", BACKGROUND_BLACK | FOREGROUND_YELLOW); // 33
-	SetCursorPosition(PositionFromCoords(VGA_WIDTH/2-(14/2)-1, VGA_HEIGHT-1));
-	PrintString("System halted.", BACKGROUND_BLACK | FOREGROUND_RED);
+void shutdown(bool noShowMode){
+	shutdownShell();
+	if(!noShowMode) ClearScreen(BACKGROUND_BLACK | FOREGROUND_YELLOW);
+	if(!noShowMode) SetCursorPosition(PositionFromCoords(VGA_WIDTH/2-(33/2)-1, VGA_HEIGHT/2));
+	if(!noShowMode) PrintString("It's safe to turn off the PC now.", BACKGROUND_BLACK | FOREGROUND_YELLOW); // 33
+	if(!noShowMode) SetCursorPosition(PositionFromCoords(VGA_WIDTH/2-(14/2)-1, VGA_HEIGHT-1));
+	if(!noShowMode) PrintString("System halted.", BACKGROUND_BLACK | FOREGROUND_RED);
 	SetCursorPosition(VGA_HEIGHT * VGA_WIDTH);
 	while(true) asm("hlt");
 }

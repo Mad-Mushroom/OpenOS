@@ -10,17 +10,24 @@
 #include "../Kernel.h"
 #include "../lib/string.cpp"
 #include "../lib/stdio.cpp"
+#include "../driver/VGA_Screen.cpp"
 
 class Shell {
     public:
         const char* Username;
         char command_buffer[256];
         uint_8 bufferSize;
+        uint_8 isRunning;
 };
 Shell shell;
 
 void initShell(){
+    shell.isRunning = 1;
     shell.Username = "User";
+}
+
+void shutdownShell(){
+    shell.isRunning = 0;
 }
 
 void displayHelp(){
@@ -36,6 +43,7 @@ void displayHelp(){
 void displayDevHelp(){
     printf("\n== OpenOS Dev Help ==\n\n");
     printf("scroll - scroll 1 time\n");
+    printf("kpanic - triggers kernel panic\n");
     printf("devhelp - display this text\n");
     
     if(!VERBOSE) printf("\nHow do you now?\n");
@@ -97,7 +105,7 @@ void ParseCommand(){
     /* User Commands */
     else if(char_contains(arguments[0], "clear")){ ClearScreen(); }
     else if(char_contains(arguments[0], "info")){ printf("\n"); info(arguments[1]); }
-    else if(char_contains(arguments[0], "shutdown")){ shutdown(); }
+    else if(char_contains(arguments[0], "shutdown")){ shutdown(false); }
     else if(char_contains(arguments[0], "help")){ displayHelp(); }
     else if(char_contains(arguments[0], "echo")){ printf("\n"); for(int i=1; i<=args; i++){ printf(arguments[i]); printf(" "); } printf("\n"); }
     else if(char_contains(arguments[0], "lines")){ printf("\n"); printf("Total lines of code: "); printf(TOTAL_LINES); printf("\n"); }
@@ -105,6 +113,7 @@ void ParseCommand(){
     /* Dev Commands */
     else if(char_contains(arguments[0], "devhelp")){ displayDevHelp(); }
     else if(char_contains(arguments[0], "scroll")){ Scroll(1); }
+    else if(char_contains(arguments[0], "kpanic")){ kpanic("Kernel Panic triggered by User :)"); }
     else if(char_contains(arguments[0], "template")){ printf("\n"); printf("You discovered a Easter Egg!\n"); }
     /* Error Messages */
     else { printf("\n\rCould not find command '"); printf(arguments[0]); printf("'!\n"); }
@@ -117,15 +126,15 @@ void ParseCommand(){
 void Shell_EnterPressed(){
     if(CursorPosition > VGA_WIDTH * (VGA_HEIGHT - 1) && !LIGHT) Scroll(1);
     if(CursorPosition > VGA_WIDTH * (VGA_HEIGHT - 1) && LIGHT) ClearScreen();
-    ParseCommand();
+    if(shell.isRunning == 1) ParseCommand();
     shell.bufferSize = 0;
     for(int i=0; i<128; i++) shell.command_buffer[i] = 0;
-    printf("\n");
-    RunShell();
+    if(shell.isRunning == 1) printf("\n");
+    if(shell.isRunning == 1) RunShell();
 }
 
 void Shell_BackspacePressed(){
-    if(shell.bufferSize > 0){
+    if(shell.bufferSize > 0 && shell.isRunning == 1){
         SetCursorPosition(CursorPosition - 1);
 	    PrintChar(' ');
 	    SetCursorPosition(CursorPosition - 1);
@@ -135,10 +144,11 @@ void Shell_BackspacePressed(){
 }
 
 void Shell_UpPressed(){
-    PrintChar('E');
+    if(shell.isRunning == 1) PrintChar('E');
 }
 
 void Shell_AddChar(char chr){
-    shell.command_buffer[shell.bufferSize] = chr;
-    shell.bufferSize++;
+    if(shell.isRunning == 1) shell.command_buffer[shell.bufferSize] = chr;
+    if(shell.isRunning == 1) shell.bufferSize++;
+    if(shell.isRunning == 1) PrintChar(chr);
 }
