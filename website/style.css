@@ -158,6 +158,12 @@ p {
 	margin: 0 auto 0 auto;
 }
 
+embed {
+    color: #ffffff;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
 /* Features */
 
 #features {
