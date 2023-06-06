@@ -7,8 +7,10 @@
 jmp EnterProtectedMode
 
 %include "src/boot/gdt.asm"
+%include "src/boot/DetectMemory.asm"
 
 EnterProtectedMode:
+	call DetectMemory
 	call EnableA20
 	cli
 	lgdt [gdt_descriptor]

@@ -73,8 +73,17 @@ void license(){
 extern "C" void _start() {
 	BootScreen();
 	init();
-	StartScreen();
-	RunShell();
+	//StartScreen();
+	//RunShell();
+
+	ClearScreen();
+
+	MemoryMapEntry** UsableMemory = GetUsableMemoryRegions();
+
+	for(uint_8 i = 0; i < UsableMemoryRegionsCount; i++){
+		MemoryMapEntry* memMap = UsableMemoryMaps[i];
+		PrintMemoryMap(memMap);
+	}
 
 	return;
 }

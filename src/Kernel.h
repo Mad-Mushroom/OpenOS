@@ -23,6 +23,7 @@ void BETA();
 #include "system/panic.cpp"
 #include "system/IO.cpp"
 #include "system/IDT.cpp"
+#include "system/memory/MemoryMap.cpp"
 
 /* Driver */
 #include "driver/VGA_Screen.cpp"
