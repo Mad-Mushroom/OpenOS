@@ -6,8 +6,8 @@ Terminal based Open-Source Operating System (like OpenComputer's OpenOS) <a href
 
 ## Pictures
 
-Screenshot from home screen (Build 06022336)
-![Untitled](https://github.com/Mad-Mushroom/OpenOS/assets/100442757/8fb67080-99ae-43a8-bee9-a23aa936e4ca)
+Screenshot from home screen (Build 060623254)
+<img width="718" alt="Screenshot 2023-06-06 at 12 21 09 PM" src="https://github.com/Mad-Mushroom/OpenOS/assets/100442757/61e1a06e-a4a7-41bc-9667-e1891cb5dded">
 
 ## Features
 
