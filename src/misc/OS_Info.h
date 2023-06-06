@@ -12,7 +12,7 @@
 #define VERBOSE false
 #define LIGHT false
 
-#define OS_VERSION "OpenOS Pre-Alpha [v0.6.4]"
+#define OS_VERSION "OpenOS Pre-Alpha [v0.6.5]"
 #define SHELL_VERSION "Shell [v0.6.5]\n\r"
 #define BUILD_VERSION BUILD_NUMBER // Month;Day;Year;BuildNumber
 
