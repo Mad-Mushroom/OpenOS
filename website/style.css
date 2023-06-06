@@ -173,6 +173,17 @@ p {
 
 /* Download */
 
+#download a {
+	font-size: 20px;
+	font-family: 'Roboto', sans-serif;
+	font-style: normal;
+	text-decoration: underline;
+}
+
+#download a:hover {
+	font-size: 25px;
+}
+
 /* GitHub */
 
 #github {
