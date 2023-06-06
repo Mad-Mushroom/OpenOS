@@ -180,14 +180,14 @@ p {
 }
 
 #github a {
-	font-size: 25px;
+	font-size: 20px;
 	font-family: 'Roboto', sans-serif;
 	font-style: normal;
-	/*text-decoration: underline overline;*/
+	text-decoration: underline;
 }
 
 #github a:hover {
-	font-size: 30px;
+	font-size: 25px;
 }
 
 form input, textarea {
