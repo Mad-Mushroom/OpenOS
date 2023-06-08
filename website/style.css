@@ -164,6 +164,10 @@ embed {
     border-radius: 10px;
 }
 
+iframe {
+	border-radius: 10px;
+}
+
 /* Features */
 
 #features {
