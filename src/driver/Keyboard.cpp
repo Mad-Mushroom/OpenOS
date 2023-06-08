@@ -19,10 +19,10 @@ void StandardKeyboardHandler(uint_8 scanCode, uint_8 chr) {
 		switch (LeftShiftPressed | RightShiftPressed)
 		{
 		case true:
-			Shell_AddChar(chr - 32);
+			//Shell_AddChar(chr - 32);
 			break;
 		case false:
-			Shell_AddChar(chr);
+			//Shell_AddChar(chr);
 			break;
 		}
 
@@ -30,7 +30,7 @@ void StandardKeyboardHandler(uint_8 scanCode, uint_8 chr) {
 	else {
 		switch (scanCode) {
 		case 0x8E: //Backspace
-			Shell_BackspacePressed();
+			//Shell_BackspacePressed();
 			break;
 		case 0x2A: //Left Shift
 			//LeftShiftPressed = true;
@@ -45,7 +45,7 @@ void StandardKeyboardHandler(uint_8 scanCode, uint_8 chr) {
 			break;
 		case 0x9C: //Enter
 			//PrintString("\n\r");
-			Shell_EnterPressed();
+			//Shell_EnterPressed();
 			break;
 		}
 	}
@@ -58,7 +58,7 @@ void KeyboardHandler0xE0(uint_8 scanCode) {
 		//SetCursorPosition(CursorPosition + VGA_WIDTH);
 		break;
 	case 0x48:
-		Shell_UpPressed();
+		//Shell_UpPressed();
 		//SetCursorPosition(CursorPosition - VGA_WIDTH);
 		break;
 	default:

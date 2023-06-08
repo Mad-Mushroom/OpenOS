@@ -8,11 +8,11 @@ tmp=$(cloc --quiet src)
 total_lines=$(echo "$tmp" | grep "SUM:" | awk '{print $NF}')
 
 rm -rf bin/*
-rm src/misc/build.h
+rm src/misc/compileinfo.h
 
 echo "#pragma once
 #define BUILD_NUMBER \"$current_date$BUILDNUMBER\"
-#define TOTAL_LINES \"$total_lines\"" > src/misc/build.h
+#define TOTAL_LINES \"$total_lines\"" > src/misc/compileinfo.h
 
 nasm src/boot/bootloader.asm -f bin -o bin/bootloader.bin
 nasm src/boot/ExtendedProgram.asm -f elf64 -o bin/ExtendedProgram.o

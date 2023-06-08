@@ -21,14 +21,6 @@ void BootScreen(){
 void StartScreen(){
 	ClearScreen(DEFAULT_BACKGROUND | DEFAULT_FOREGROUND);
 	SetCursorPosition(0);
-    /*PrintString("   ____                    ____   _____ \n");
-    PrintString("  / __ \\                  / __ \\ / ____|\n");
-    PrintString(" | |  | |_ __   ___ _ __ | |  | | (___  \n");
-    PrintString(" | |  | | '_ \\ / _ \\ '_ \\| |  | |\\___ \\ \n");
-    PrintString(" | |__| | |_) |  __/ | | | |__| |____) |\n");
-    PrintString("  \\____/| .__/ \\___|_| |_|\\____/|_____/ \n");
-    PrintString("        | |                               \n");
-    PrintString("        |_|                                \n");*/
 	PrintString(Logo);
 	PrintVersion();
 	PrintString("Copyright (c) 2023 MadMushroom\n");
@@ -50,13 +42,11 @@ void init(){
 	if(VERBOSE == true) PrintString("\nInitialized IDT.");
 	MainKeyboardHandler = KeyboardHandler;
 	if(VERBOSE == true) PrintString("\nInitialized Keyboard Handler.");
-	initShell();
 	if(VERBOSE == true) PrintString("\nInitialized Shell.");
 	if(VERBOSE == true) PrintString("\n\nDone.");
 }
 
 void shutdown(bool noShowMode){
-	shutdownShell();
 	if(!noShowMode) ClearScreen(BACKGROUND_BLACK | FOREGROUND_YELLOW);
 	if(!noShowMode) SetCursorPosition(PositionFromCoords(VGA_WIDTH/2-(33/2)-1, VGA_HEIGHT/2));
 	if(!noShowMode) PrintString("It's safe to turn off the PC now.", BACKGROUND_BLACK | FOREGROUND_YELLOW); // 33
@@ -73,8 +63,6 @@ void license(){
 extern "C" void _start() {
 	BootScreen();
 	init();
-	//StartScreen();
-	//RunShell();
 
 	ClearScreen();
 

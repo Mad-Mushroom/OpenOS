@@ -15,9 +15,9 @@ void BETA();
 
 /* Misc */
 #include "misc/OS_Info.h"
-#include "misc/KBScanCodeSet1.cpp"
-#include "misc/TextModeColorCodes.cpp"
-#include "misc/Typedefs.cpp"
+#include "misc/KBScanCodeSet1.h"
+#include "misc/TextModeColorCodes.h"
+#include "misc/Typedefs.h"
 
 /* System */
 #include "system/panic.cpp"
