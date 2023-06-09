@@ -68,7 +68,7 @@ header {
 }
 
 #logo {
-	width: 55px;
+	width: 100px;
 	float: left;
 	margin: 5px 0 0 50px;
 }
@@ -78,7 +78,7 @@ header {
 }
 
 #logo img {
-	width: 100%;
+	width: 40%;
 }
 
 #logo a p {
