@@ -73,5 +73,8 @@ extern "C" void _start() {
 		PrintMemoryMap(memMap);
 	}
 
+	PrintString("\n");
+	PrintVersion(true);
+
 	return;
 }

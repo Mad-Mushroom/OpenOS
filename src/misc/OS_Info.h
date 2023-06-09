@@ -13,17 +13,17 @@
 #define LIGHT false
 
 #define OS_VERSION "OpenOS Pre-Alpha [v0.6.6]"
-#define SHELL_VERSION "Shell [v0.6.5]\n\r"
+#define OTHER_VERSION "OpenKernel [v0.5.1]\nShell [v0.6.5]\n"
 #define BUILD_VERSION BUILD_NUMBER // Month;Day;Year;BuildNumber
 
 #if VERBOSE == true
-#define SVERSION "Dev Edition\n\r"
+#define SVERSION "Dev Edition\n"
 #endif
 #if LIGHT == true
-#define SVERSION "Light Edition\n\r"
+#define SVERSION "Light Edition\n"
 #endif
 #if VERBOSE == false && LIGHT == false
-#define SVERSION "\n\r"
+#define SVERSION "\n"
 #endif
 
 #define DEFAULT_BACKGROUND BACKGROUND_BLUE

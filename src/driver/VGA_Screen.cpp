@@ -87,7 +87,8 @@ void PrintVersion(bool detailed = false){
   PrintChar(' ');
   PrintString(SVERSION);
   if(detailed){
-    PrintString(SHELL_VERSION);
+    PrintString("\n");
+    PrintString(OTHER_VERSION);
     PrintString("Build ");
     PrintString(BUILD_VERSION);
     PrintString("\n");

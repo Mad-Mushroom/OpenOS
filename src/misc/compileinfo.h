@@ -1,3 +1,3 @@
 #pragma once
-#define BUILD_NUMBER "060823289"
-#define TOTAL_LINES "816"
+#define BUILD_NUMBER "060923294"
+#define TOTAL_LINES "819"
