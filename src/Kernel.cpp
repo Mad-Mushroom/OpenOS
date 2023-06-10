@@ -79,23 +79,9 @@ extern "C" void _start() {
 	PrintVersion(true);*/
 
 	void* TestMemoryAddress = malloc(0x10);
-	void* TestMemoryAddress2 = malloc(0x10);
-	void* TestMemoryAddress3 = malloc(0x10);
 
 	PrintString(HexToString((uint_64)TestMemoryAddress));
-	PrintString("\n");
-	PrintString(HexToString((uint_64)TestMemoryAddress2));
-	PrintString("\n");
-	PrintString(HexToString((uint_64)TestMemoryAddress3));
-	PrintString("\n");
 
-	free(TestMemoryAddress);
-	free(TestMemoryAddress2);
-	free(TestMemoryAddress3);
-
-	void* Test4 = malloc(0x60);
-
-	PrintString(HexToString((uint_64)Test4));
-
+	ncErr("TEST");
 	return;
 }

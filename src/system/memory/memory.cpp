@@ -26,9 +26,13 @@ void memset(void* start, uint_64 value, uint_64 num){
         *ptr = value;
     }
 
-    uint_8 valPtr = (uint_8*)&value;
+    uint_8* valPtr = (uint_8*)&value;
     for(uint_8* ptr = ((uint_8*)start + newnum); ptr < (uint_8*)((uint_64)start + num); ptr++){
         *ptr = *valPtr;
         valPtr++;
     }
+}
+
+void memcpy(void * destination, void* source, uint_64 num){
+
 }

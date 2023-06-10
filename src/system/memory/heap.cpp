@@ -72,7 +72,7 @@ void* malloc(uint_64 size){
     return 0;
 }
 
-void calloc(uint_64 size){
+/*void* calloc(uint_64 size){
     void* mallocVal = malloc(size);
     memset(mallocVal, 0, size);
     return mallocVal;
@@ -80,7 +80,7 @@ void calloc(uint_64 size){
 
 void* calloc(uint_64 num, uint_64 size){
     return calloc(num * size);
-}
+}*/
 
 void CombineFreeSegments(MemorySegmentHeader* a, MemorySegmentHeader* b){
     if(a == 0) return;
