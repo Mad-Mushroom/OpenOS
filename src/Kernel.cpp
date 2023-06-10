@@ -42,6 +42,8 @@ void init(){
 	if(VERBOSE == true) PrintString("\nInitialized IDT.");
 	MainKeyboardHandler = KeyboardHandler;
 	if(VERBOSE == true) PrintString("\nInitialized Keyboard Handler.");
+	InitializeHeap(0x100000, 0x100000);
+	if(VERBOSE == true) PrintString("Initialized Heap.");
 	if(VERBOSE == true) PrintString("\nInitialized Shell.");
 	if(VERBOSE == true) PrintString("\n\nDone.");
 }
@@ -66,7 +68,7 @@ extern "C" void _start() {
 
 	ClearScreen();
 
-	MemoryMapEntry** UsableMemory = GetUsableMemoryRegions();
+	/*MemoryMapEntry** UsableMemory = GetUsableMemoryRegions();
 
 	for(uint_8 i = 0; i < UsableMemoryRegionsCount; i++){
 		MemoryMapEntry* memMap = UsableMemoryMaps[i];
@@ -74,7 +76,18 @@ extern "C" void _start() {
 	}
 
 	PrintString("\n");
-	PrintVersion(true);
+	PrintVersion(true);*/
+
+	void* TestMemoryAddress = malloc(0x10);
+	void* TestMemoryAddress2 = malloc(0x10);
+	void* TestMemoryAddress3 = malloc(0x10);
+
+	PrintString(HexToString((uint_64)TestMemoryAddress));
+	PrintString("\n");
+	PrintString(HexToString((uint_64)TestMemoryAddress2));
+	PrintString("\n");
+	PrintString(HexToString((uint_64)TestMemoryAddress3));
+	PrintString("\n");
 
 	return;
 }
