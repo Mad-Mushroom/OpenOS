@@ -65,6 +65,7 @@ void license(){
 extern "C" void _start() {
 	BootScreen();
 	init();
+	//StartScreen();
 
 	ClearScreen();
 
@@ -82,6 +83,5 @@ extern "C" void _start() {
 
 	PrintString(HexToString((uint_64)TestMemoryAddress));
 
-	ncErr("TEST");
 	return;
 }
