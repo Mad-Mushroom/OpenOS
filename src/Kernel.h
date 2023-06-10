@@ -24,6 +24,7 @@ void BETA();
 #include "system/IO.cpp"
 #include "system/IDT.cpp"
 #include "system/memory/MemoryMap.cpp"
+#include "system/memory/memory.cpp"
 #include "system/memory/heap.cpp"
 
 /* Driver */

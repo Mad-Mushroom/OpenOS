@@ -13,7 +13,7 @@
 #define LIGHT false
 
 #define OS_VERSION "OpenOS Pre-Alpha [v0.6.6]"
-#define OTHER_VERSION "OpenKernel [v0.5.1]\nShell [v0.6.5]\n"
+#define OTHER_VERSION "OpenKernel [v0.6.2]\nShell [v0.6.5]\n"
 #define BUILD_VERSION BUILD_NUMBER // Month;Day;Year;BuildNumber
 
 #if VERBOSE == true

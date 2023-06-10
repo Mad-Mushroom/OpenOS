@@ -71,3 +71,25 @@ void kpanic(const char* msg){
 
   for(;;) asm("hlt");
 }
+
+void ncErr(const char* msg){
+  //ClearScreen(0x0F | 0x90);
+  uint_64 ClearColor = 0x0F | 0x90;
+  uint_64 value =0;
+  value += ClearColor << 8;
+  value += ClearColor << 24;
+  value += ClearColor << 40;
+  value += ClearColor << 56;
+  for (uint_64* i = (uint_64*)pVGA_MEMORY; i < (uint_64*)(pVGA_MEMORY + 4000); i++){
+    *i = value;
+  }
+  poutb(0x3D4, 0x0F);
+  poutb(0x3D5, (uint_8)((pVGA_WIDTH*pVGA_HEIGHT) & 0xFF));
+  poutb(0x3D4, 0x0E);
+  poutb(0x3D5, (uint_8)(((pVGA_WIDTH*pVGA_HEIGHT) >> 8) & 0xFF));
+  pPrintString("Non critical System Error occured.\n\n", 0x0F | 0x90);
+  pPrintString("Details:\n", 0x0F | 0x90);
+  pPrintString(msg, 0x0F | 0x90);
+  pPrintString("\n\n", 0x0F | 0x90);
+  pPrintString("Press Enter to continue.", 0x0F | 0x90);
+}
