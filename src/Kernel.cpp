@@ -67,9 +67,14 @@ extern "C" void _start() {
 	init();
 	StartScreen();
 
+	Shell MainShell;
+
+	MainShell.init();
+	MainShell.run();
+
 	//ClearScreen();
 
-	/*MemoryMapEntry** UsableMemory = GetUsableMemoryRegions();
+	/*MemoryMap	Entry** UsableMemory = GetUsableMemoryRegions();
 
 	for(uint_8 i = 0; i < UsableMemoryRegionsCount; i++){
 		MemoryMapEntry* memMap = UsableMemoryMaps[i];
@@ -79,9 +84,9 @@ extern "C" void _start() {
 	PrintString("\n");
 	PrintVersion(true);*/
 
-	void* TestMemoryAddress = malloc(0x10);
+	//void* TestMemoryAddress = malloc(0x10);
 
-	PrintString(HexToString((uint_64)TestMemoryAddress));
+	//PrintString(HexToString((uint_64)TestMemoryAddress));
 
 	return;
 }

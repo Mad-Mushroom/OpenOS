@@ -6,13 +6,15 @@ echo "$BUILDNUMBER" > build.txt
 current_date=$(date +"%m%d%y")
 tmp=$(cloc --quiet src)
 total_lines=$(echo "$tmp" | grep "SUM:" | awk '{print $NF}')
+checksum=$(md5sum -s bin/OpenOS.iso | awk '{print $1}')
 
 rm -rf bin/*
 rm src/misc/compileinfo.h
 
 echo "#pragma once
 #define BUILD_NUMBER \"$current_date$BUILDNUMBER\"
-#define TOTAL_LINES \"$total_lines\"" > src/misc/compileinfo.h
+#define TOTAL_LINES \"$total_lines\"
+#define MD5_CHECKSUM \"$checksum\"" > src/misc/compileinfo.h
 
 nasm src/boot/bootloader.asm -f bin -o bin/bootloader.bin
 nasm src/boot/ExtendedProgram.asm -f elf64 -o bin/ExtendedProgram.o
