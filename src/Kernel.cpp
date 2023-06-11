@@ -44,7 +44,7 @@ void init(){
 	if(VERBOSE == true) PrintString("\nInitialized Keyboard Handler.");
 	InitializeHeap(0x100000, 0x100000);
 	if(VERBOSE == true) PrintString("Initialized Heap.");
-	shell_init();
+	initShell();
 	if(VERBOSE == true) PrintString("\nInitialized Shell.");
 	if(VERBOSE == true) PrintString("\n\nDone.");
 }
@@ -67,6 +67,8 @@ extern "C" void _start() {
 	BootScreen();
 	init();
 	StartScreen();
+
+	RunShell();
 
 	//ClearScreen();
 

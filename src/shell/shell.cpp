@@ -11,19 +11,36 @@
 
 class Shell {
     public:
-        // Variables
         const char* Username;
-        bool initialized = false;
+        char commandBuffer[512];
+        uint_16 bufferSize;
 };
+Shell shell;
 
-void shell_init(){
-    malloc(sizeof(Shell));
-    //Username = "user";
-    //initialized = true;
+void initShell(){
+    malloc(sizeof(shell));
+    shell.Username = "user";
 }
 
-void shell_run(){
-    //if(!initialized){ ncErr("Shell not initialized!\nCannot run Shell!\n\nRebooting might solve this Error."); return; }
-    //PrintString(Username);
-    PrintString(">");
+void RunShell(){
+    PrintString(shell.Username);
+    PrintString("> ");
+}
+
+void ParseCommand(){
+    char arguments[16][32];
+    uint_16 index;
+    uint_16 index2;
+    uint_8 args;
+
+    while(shell.commandBuffer[index] != 0){
+        if(shell.commandBuffer[index] == ' '){ args++; index++; index2 = 0; }
+        else { arguments[args][index2] = shell.commandBuffer[index]; index++; index2++; }
+    }
+
+    
+}
+
+void Shell_EnterPressed(){
+    
 }
