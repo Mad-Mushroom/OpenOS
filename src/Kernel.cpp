@@ -48,6 +48,10 @@ void init(){
 	if(VERBOSE == true) PrintString("\n\nDone.");
 }
 
+void license(){
+	PrintString(License);
+}
+
 void shutdown(bool noShowMode){
 	if(!noShowMode) ClearScreen(BACKGROUND_BLACK | FOREGROUND_YELLOW);
 	if(!noShowMode) SetCursorPosition(PositionFromCoords(VGA_WIDTH/2-(33/2)-1, VGA_HEIGHT/2));
@@ -58,16 +62,12 @@ void shutdown(bool noShowMode){
 	while(true) asm("hlt");
 }
 
-void license(){
-	PrintString(License);
-}
-
 extern "C" void _start() {
 	BootScreen();
 	init();
-	//StartScreen();
+	StartScreen();
 
-	ClearScreen();
+	//ClearScreen();
 
 	/*MemoryMapEntry** UsableMemory = GetUsableMemoryRegions();
 
