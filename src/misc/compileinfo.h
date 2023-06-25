@@ -1,4 +1,4 @@
 #pragma once
-#define BUILD_NUMBER "061123382"
-#define TOTAL_LINES "997"
-#define MD5_CHECKSUM "7eb0b682cb2f43e546fa2a0ba0cbb544"
+#define BUILD_NUMBER "062523455"
+#define TOTAL_LINES "1017"
+#define MD5_CHECKSUM "52f0cf3548d2d0d082e41cba025a66a0"

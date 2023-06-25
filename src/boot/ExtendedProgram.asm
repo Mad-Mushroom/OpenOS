@@ -57,7 +57,7 @@ Start64Bit:
 	mov ecx, 500
 	rep stosq
 
-	call ActivateSSE
+	;call ActivateSSE
 	call _start
 	
 	jmp $

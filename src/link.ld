@@ -11,7 +11,7 @@ INPUT
 
 OUTPUT
 (
-  bin/kernel.bin
+  bin/Kernel.bin
 )
 
 SECTIONS

@@ -42,7 +42,7 @@ void init(){
 	if(VERBOSE == true) PrintString("\nInitialized IDT.");
 	MainKeyboardHandler = KeyboardHandler;
 	if(VERBOSE == true) PrintString("\nInitialized Keyboard Handler.");
-	InitializeHeap(0x100000, 0x100000);
+	//InitializeHeap(0x100000, 0x100000);
 	if(VERBOSE == true) PrintString("Initialized Heap.");
 	initShell();
 	if(VERBOSE == true) PrintString("\nInitialized Shell.");
